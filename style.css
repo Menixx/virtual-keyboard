@@ -5,15 +5,13 @@
     border-radius: 2%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: auto;
-    padding-right: auto;
 }
 
 #key-board {
     width: 1060px;
     height: 350px;
     padding: 2px;
-    background-color: brown;
+    background-color: rgb(20, 21, 22);
     align-items: center;
     margin-left: auto;
     margin-right: auto;
@@ -23,6 +21,13 @@ button {
     width: 65px;
     height: 65px;
     margin: 2px;
+    background-color: rgb(100, 186, 189);
+    color: rgb(45, 38, 28);
+}
+
+button.pressed {
+    background-color: gold;
+    
 }
 
 #backspace {
@@ -35,6 +40,13 @@ button {
 
 #caps {
     width: 130px;
+}
+
+#light {
+    width: 10px;
+    height: 10px;
+    background-color: yellow;
+    float: right;
 }
 
 #enter {
