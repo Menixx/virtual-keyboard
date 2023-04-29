@@ -1,0 +1,62 @@
+#entry {
+    width: 650px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+#key-board {
+    width: 1060px;
+    height: 350px;
+    padding: 2px;
+    background-color: brown;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    width: 65px;
+    height: 65px;
+    margin: 2px;
+}
+
+#backspace {
+    width: 159px;
+}
+
+#tab {
+    width: 89px;
+}
+
+#caps {
+    width: 130px;
+}
+
+#enter {
+    width: 162px;
+}
+
+#shift {
+    width: 160px;
+}
+
+#r-shift {
+    width: 132px;
+}
+
+#ctrl {
+    width: 130px;
+}
+
+#space {
+    width: 371px;
+}
+
+#lang {
+    width: 63px;
+}
