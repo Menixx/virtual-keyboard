@@ -23,11 +23,12 @@ button {
     background-color: rgb(100, 186, 189);
     color: rgb(45, 38, 28);
     transition: background-color 0.15s;
+    font-size: 17px;
 }
 
 button:focus {
     outline: none;
-  }
+}
 
 button.pressed {
     background-color: gold;
@@ -35,10 +36,13 @@ button.pressed {
 
 #backspace {
     width: 159px;
+    height: 64px;
 }
 
 #tab {
     width: 89px;
+    text-align: left;
+    padding-left: 18px;
 }
 
 #caps {
@@ -46,12 +50,12 @@ button.pressed {
 }
 
 #light {
-    width: 5px;
+    width: 4.5px;
     height: 5px;
-    margin-top: 5px;
-    margin-right: 10px;
-    /* background-color: cornflowerblue; */
+    margin-top: 7px;
+    margin-right: 5px;
     float: right;
+    border-radius: 20%;
 }
 
 .active {
@@ -64,6 +68,8 @@ button.pressed {
 
 #shift {
     width: 160px;
+    text-align: left;
+    padding-left: 18px;
 }
 
 #r-shift {
@@ -72,10 +78,13 @@ button.pressed {
 
 #ctrl {
     width: 130px;
+    text-align: left;
+    padding-left: 18px;
 }
 
 #space {
     width: 371px;
+    color: rgb(100, 186, 189);
 }
 
 #lang {

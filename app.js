@@ -39,8 +39,33 @@ function createKey(symb) {
     if (symb == 'caps') {
         const light = document.createElement('div');
         light.id = 'light'
+        button.textContent = 'CapsLock'
         button.appendChild(light);
-    } 
+    } else if (symb === 'tab') {
+        button.textContent = 'Tab'
+    } else if (symb === 'shift' || symb === 'r-shift') {
+        button.textContent = 'Shift'
+    } else if (symb === 'ctrl' || symb === 'r-ctrl') {
+        button.textContent = 'Ctrl'
+    } else if (symb === 'alt' || symb === 'r-alt') {
+        button.textContent = 'Alt'
+    } else if (symb === 'delete') {
+        button.textContent = 'Delete'
+    } else if (symb === 'enter') {
+        button.textContent = 'Enter'
+    } else if (symb === 'space') {
+        button.textContent = '.'
+    } else if (symb === 'up') {
+        button.textContent = '↑'
+    } else if (symb === 'down') {
+        button.textContent = '↓'
+    } else if (symb === 'left') {
+        button.textContent = '←'
+    } else if (symb === 'right') {
+        button.textContent = '→'
+    } else if (symb === 'backspace') {
+        button.textContent = '⇐ Backspace'
+    }
     keyBoard.appendChild(button); 
 }
 
