@@ -3,8 +3,9 @@ const symbols = [
     'tab', 'q', 'w', 'e', 'r', 't', 'y','u','i','o','p','[',']','\\','delete',
     'caps','a','s','d','f','g','h','j','k','l',';',"'",'enter',
     'shift','z','x','c','v','b','n','m',',','.','/','up','r-shift',
-    'ctrl','win','alt','space','alt','right-ctrl','left','down','right', 'lang'
+    'ctrl','win','alt','space','r-alt','r-ctrl','left','down','right', 'lang'
     ];
+let capsActive = false;
 
 const entry = document.createElement('p')
 entry.id = 'entry'
@@ -14,10 +15,21 @@ const keyBoard = document.createElement('div')
 keyBoard.id = 'key-board'
 document.body.appendChild(keyBoard)
 
+function correctText(el) {
+    if (el == 'caps') return 'Caps Lock'
+    return el
+}
+
 function createKey(symb) {
     const button = document.createElement('button');
     button.innerText = symb;
     button.id = symb;
+    if (symb == 'caps') {
+        const light = document.createElement('div');
+        light.id = 'light'
+        button.appendChild(light);
+        keyBoard.appendChild(button);
+    } else
     keyBoard.appendChild(button); 
 }
 
@@ -25,7 +37,10 @@ for (let el of symbols) {
     createKey(el);
 }
 
+document.getElementById('space').value = ''
+
 //functional: virtual keysrokes light up by pressing physical ones
+
 function getRightId(value) {
     if (value == 'Tab' || value == 'Shift' || value == 'Alt' || value == 'Backspace' || value == 'Enter' || value == 'Delete') {
         return value[0].toLowerCase() + value.slice(1)
@@ -48,17 +63,42 @@ function getRightId(value) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key == 'Tab' || e.key == 'Alt' || e.key == 'CapsLock') {
+    if (e.key == 'Tab' || e.key == 'Alt') {
         e.preventDefault()
     } 
 
-    let k = document.getElementById(getRightId(e.key))
-    //alert(e.key)
-    k.classList.add('pressed')
-    
+    if (e.code === 'CapsLock') {
+        capsActive = !capsActive;
+        document.getElementById('light').classList.toggle('active', capsActive);
+    }
+
+    if (e.code === 'ShiftRight') {
+        let k = document.getElementById('r-shift')
+        k.classList.add('pressed')
+    } else if (e.code === 'ControlRight') {
+        let k = document.getElementById('r-ctrl')
+        k.classList.add('pressed')
+    } else if (e.code === 'AltRight') {
+        let k = document.getElementById('r-alt')
+        k.classList.add('pressed')
+    } else {
+        let k = document.getElementById(getRightId(e.key))
+        k.classList.add('pressed')
+    }  
 })
 
 document.addEventListener('keyup', (e) => {
-    let k = document.getElementById(getRightId(e.key))
-    k.classList.remove('pressed')
+    if (e.code === 'ShiftRight') {
+        let k = document.getElementById('r-shift')
+        k.classList.remove('pressed')
+    } else if (e.code === 'ControlRight') {
+        let k = document.getElementById('r-ctrl')
+        k.classList.remove('pressed')
+    } else if (e.code === 'AltRight') {
+        let k = document.getElementById('r-alt')
+        k.classList.remove('pressed')
+    } else {
+        let k = document.getElementById(getRightId(e.key))
+        k.classList.remove('pressed')
+    }
 })
