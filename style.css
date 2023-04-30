@@ -22,11 +22,15 @@ button {
     margin: 2px;
     background-color: rgb(100, 186, 189);
     color: rgb(45, 38, 28);
+    transition: background-color 0.15s;
 }
+
+button:focus {
+    outline: none;
+  }
 
 button.pressed {
     background-color: gold;
-    
 }
 
 #backspace {
@@ -76,4 +80,5 @@ button.pressed {
 
 #lang {
     width: 63px;
+    border-color: crimson;
 }

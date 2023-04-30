@@ -73,7 +73,7 @@ function getRightId(value) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key == 'Tab' || e.key == 'Alt') {
+    if (e.key == 'Tab' || e.key == 'Alt' || e.code == 'Space') {
         e.preventDefault()
     } 
 
