@@ -27,14 +27,18 @@ const keyBoard = document.createElement('div')
 keyBoard.id = 'key-board'
 document.body.appendChild(keyBoard)
 
-// function correctText(el) {
-//     if (el == 'caps') return 'Caps Lock'
-//     return el
-// }
+function switchLetter(letter) {
+    if (letters.en.includes(letter)) {
+        let i = letters.en.indexOf(letter)
+        return letters.ua[i]
+    } else {
+        return letter
+    }
+}
 
 function createKey(symb) {
     const button = document.createElement('button');
-    button.textContent = symb;
+    button.textContent = localStorage.getItem('currentLayout') ? switchLetter(symb) : symb;
     button.id = symb;
     if (symb == 'caps') {
         const light = document.createElement('div');
@@ -141,13 +145,18 @@ document.addEventListener('keyup', (e) => {
 
 let langButton = document.getElementById('lang')
 langButton.addEventListener('click', () => {
-    for (let letter of letters.en) {
-        let key = document.getElementById(letter)
-        if (key.textContent === letter) {
+    if (!localStorage.getItem('currentLayout')) {
+        for (let letter of letters.en) {
+            let key = document.getElementById(letter)
             key.textContent = letters.ua[letters.en.indexOf(letter)]
-        } else {
+        }
+        localStorage.setItem('currentLayout', 'ua')
+    } else {
+        for (let letter of letters.en) {
+            let key = document.getElementById(letter)
             key.textContent = letter
         }
+        localStorage.removeItem('currentLayout')
     }
 })
 
