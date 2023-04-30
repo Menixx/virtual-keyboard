@@ -5,6 +5,18 @@ const symbols = [
     'shift','z','x','c','v','b','n','m',',','.','/','up','r-shift',
     'ctrl','win','alt','space','r-alt','r-ctrl','left','down','right', 'lang'
     ];
+const letters = {
+    en: [
+        '`','q','w','e','r','t','y','u','i','o','p','[',']',
+        'a','s','d','f','g','h','j','k','l',';',"'",
+        'z','x','c','v','b','n','m',',','.'
+    ],
+    ua: [
+        "'",'й','ц','у','к','е','н','г','ш','щ','з','х','ї',
+        'ф','і','в','а','п','р','о','л','д','ж',"є",
+        'я','ч','с','м','и','т','ь','б','ю'
+    ]
+}
 let capsActive = false;
 
 const entry = document.createElement('p')
@@ -15,14 +27,14 @@ const keyBoard = document.createElement('div')
 keyBoard.id = 'key-board'
 document.body.appendChild(keyBoard)
 
-function correctText(el) {
-    if (el == 'caps') return 'Caps Lock'
-    return el
-}
+// function correctText(el) {
+//     if (el == 'caps') return 'Caps Lock'
+//     return el
+// }
 
 function createKey(symb) {
     const button = document.createElement('button');
-    button.innerText = symb;
+    button.textContent = symb;
     button.id = symb;
     if (symb == 'caps') {
         const light = document.createElement('div');
@@ -36,8 +48,6 @@ function createKey(symb) {
 for (let el of symbols) {
     createKey(el);
 }
-
-document.getElementById('space').value = ''
 
 //functional: virtual keysrokes light up by pressing physical ones
 
@@ -102,3 +112,18 @@ document.addEventListener('keyup', (e) => {
         k.classList.remove('pressed')
     }
 })
+
+//functional: switching keyboard layouts
+
+let langButton = document.getElementById('lang')
+langButton.addEventListener('click', () => {
+    for (let letter of letters.en) {
+        let key = document.getElementById(letter)
+        if (key.textContent === letter) {
+            key.textContent = letters.ua[letters.en.indexOf(letter)]
+        } else {
+            key.textContent = letter
+        }
+    }
+})
+
