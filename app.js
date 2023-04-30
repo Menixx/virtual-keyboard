@@ -40,8 +40,7 @@ function createKey(symb) {
         const light = document.createElement('div');
         light.id = 'light'
         button.appendChild(light);
-        keyBoard.appendChild(button);
-    } else
+    } 
     keyBoard.appendChild(button); 
 }
 
