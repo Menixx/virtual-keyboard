@@ -75,6 +75,7 @@ button.pressed {
 
 #caps {
     width: 130px;
+    background-color: rgb(100, 186, 189);
 }
 
 #light {

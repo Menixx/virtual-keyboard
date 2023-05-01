@@ -122,12 +122,38 @@ function getRightId(value) {
         return 'shift'
     } else if (value === 'AltLeft') {
         return 'alt'
-    }
-    return value
+    } else if (value === 'Backquote') {
+        return '`'
+    } else if (value === 'Quote') {
+        return "'"
+    } else if (value === 'Minus') {
+        return '-'
+    } else if (value === 'Equal') {
+        return '='
+    } else if (value === 'Backslash') {
+        return '\\'
+    } else if (value === 'Slash') {
+        return '/'
+    } else if (value === 'BracketLeft') {
+        return '['
+    } else if (value === 'BracketRight') {
+        return ']'
+    } else if (value === 'Semicolon') {
+        return ';'
+    } else if (value === 'Period') {
+        return '.'
+    } else if (value === 'Comma') {
+        return ','
+    } else if (value === 'CapsLock') {
+        return 'caps'
+    } else if (value === 'MetaLeft' || value === 'MetaRight') {
+        return 'win'
+    } 
+    return value.slice(-1).toLowerCase()
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key == 'Tab' || e.key == 'Alt' || e.code == 'Space' || e.code == 'Enter') {
+    if (e.key == 'Shift' || e.key == 'Alt' || e.code == 'Space' || e.code == 'Enter') {
         e.preventDefault()
     } 
 
