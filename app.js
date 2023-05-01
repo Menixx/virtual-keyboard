@@ -98,14 +98,12 @@ for (let el of symbols) {
 //functional: virtual keysrokes light up by pressing physical ones
 
 function getRightId(value) {
-    if (value == 'Tab' || value == 'Shift' || value == 'Alt' || value == 'Backspace' || value == 'Enter' || value == 'Delete') {
+    if (value == 'Tab' || value == 'Backspace' || value == 'Enter' || value == 'Delete' || value == 'Space') {
         return value[0].toLowerCase() + value.slice(1)
-    } else if (value == 'Control') {
+    } else if (value == 'ControlLeft') {
         return 'ctrl'
     } else if (value == 'Meta') {
         return 'win'
-    } else if (value == ' ') {
-        return 'space'
     } else if (value == 'ArrowUp') {
         return 'up'
     } else if (value == 'ArrowDown') {
@@ -114,6 +112,16 @@ function getRightId(value) {
         return 'right'
     } else if (value == 'ArrowLeft') {
         return 'left'
+    } else if (value === 'ShiftRight') {
+        return 'r-shift'
+    } else if (value === 'ControlRight') {
+        return 'r-ctrl'
+    } else if (value === 'AltRight') {
+        return 'r-alt'
+    } else if (value === 'ShiftLeft') {
+        return 'shift'
+    } else if (value === 'AltLeft') {
+        return 'alt'
     }
     return value
 }
@@ -128,35 +136,14 @@ document.addEventListener('keydown', (e) => {
         document.getElementById('light').classList.toggle('active', capsActive);
     }
 
-    if (e.code === 'ShiftRight') {
-        let k = document.getElementById('r-shift')
-        k.classList.add('pressed')
-    } else if (e.code === 'ControlRight') {
-        let k = document.getElementById('r-ctrl')
-        k.classList.add('pressed')
-    } else if (e.code === 'AltRight') {
-        let k = document.getElementById('r-alt')
-        k.classList.add('pressed')
-    } else {
-        let k = document.getElementById(getRightId(e.key))
-        k.classList.add('pressed')
-    }  
+    let k = document.getElementById(getRightId(e.code));
+    k.click();
+    k.classList.add('pressed');
 })
 
 document.addEventListener('keyup', (e) => {
-    if (e.code === 'ShiftRight') {
-        let k = document.getElementById('r-shift')
-        k.classList.remove('pressed')
-    } else if (e.code === 'ControlRight') {
-        let k = document.getElementById('r-ctrl')
-        k.classList.remove('pressed')
-    } else if (e.code === 'AltRight') {
-        let k = document.getElementById('r-alt')
-        k.classList.remove('pressed')
-    } else {
-        let k = document.getElementById(getRightId(e.key))
-        k.classList.remove('pressed')
-    }
+    let k = document.getElementById(getRightId(e.code));
+    k.classList.remove('pressed');
 })
 
 //functional: switching keyboard layouts
