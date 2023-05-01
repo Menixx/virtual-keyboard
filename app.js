@@ -73,8 +73,22 @@ function createKey(symb) {
         button.textContent = localStorage.getItem('currentLayout') ? 'UA' : 'EN';
     } else if (symb === 'win') {
         button.textContent = 'Win';
+    } else {
+        button.className = 'printable'
     }
     keyBoard.appendChild(button); 
+
+    button.addEventListener('click', () => {
+        if (button.className === 'printable') {
+            entry.textContent += button.textContent
+        } else if (button.id === 'space') {
+            entry.textContent += ' '
+        } else if (button.id === 'backspace') {
+            entry.textContent = entry.textContent.slice(0, -1)
+        } else if (button.id === 'delete') {
+            entry.textContent = ''
+        }
+    })
 }
 
 for (let el of symbols) {
