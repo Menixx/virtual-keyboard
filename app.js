@@ -69,6 +69,10 @@ function createKey(symb) {
         button.textContent = '→'
     } else if (symb === 'backspace') {
         button.textContent = '⇐ Backspace'
+    } else if (symb === 'lang') {
+        button.textContent = localStorage.getItem('currentLayout') ? 'UA' : 'EN';
+    } else if (symb === 'win') {
+        button.textContent = 'Win';
     }
     keyBoard.appendChild(button); 
 }
@@ -151,12 +155,14 @@ langButton.addEventListener('click', () => {
             key.textContent = letters.ua[letters.en.indexOf(letter)]
         }
         localStorage.setItem('currentLayout', 'ua')
+        langButton.textContent = 'UA'
     } else {
         for (let letter of letters.en) {
             let key = document.getElementById(letter)
             key.textContent = letter
         }
         localStorage.removeItem('currentLayout')
+        langButton.textContent = 'EN'
     }
 })
 
